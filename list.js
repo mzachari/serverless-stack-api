@@ -13,7 +13,7 @@ export const main = handler(async (event, context) => {
     // of the authenticated user
     KeyConditionExpression: "userId = :userId",
     ExpressionAttributeValues: {
-      ":userId": event.requestContext.authorizer.claims['cognito:username'],
+      ":userId": event.requestContext.authorizer.claims.sub,
     },
   };
   const result = await dynamoDb.query(params);

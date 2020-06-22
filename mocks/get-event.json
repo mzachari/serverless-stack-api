@@ -3,8 +3,10 @@
     "id": "fbdff800-b43f-11ea-8b3d-25e7de5c5d39"
   },
   "requestContext": {
-    "identity": {
-      "cognitoIdentityId": "USER-SUB-1234"
+    "authorizer": {
+      "claims": {
+        "sub": "USER-SUB-1234"
+      }
     }
   }
 }

@@ -9,7 +9,7 @@ export const main = handler(async (event, context) => {
     // - 'userId': Identity Pool identity id of the authenticated user
     // - 'noteId': path parameter
     Key: {
-      userId: event.requestContext.authorizer.claims['cognito:username'],
+      userId: event.requestContext.authorizer.claims.sub,
       noteId: event.pathParameters.id,
     },
   };
