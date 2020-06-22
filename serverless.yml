@@ -51,20 +51,23 @@ functions:
           path: notes
           method: post
           cors: true
-          authorizer: aws_iam
+          authorizer: 
+            arn: arn:aws:cognito-idp:ap-south-1:925516598557:userpool/ap-south-1_487tj7mc9
   get:
     handler: get.main
     events:
       - http:
-        path: notes/{id}
-        method: get
-        cors: true
-        authorizer: aws_iam
+          path: notes/{id}
+          method: get
+          cors: true
+          authorizer: 
+            arn: arn:aws:cognito-idp:ap-south-1:925516598557:userpool/ap-south-1_487tj7mc9
   list:
     handler: list.main
     events:
       - http:
-        path: notes
-        method: get
-        cors: true
-        authorizer: aws_iam
+          path: notes
+          method: get
+          cors: true
+          authorizer: 
+            arn: arn:aws:cognito-idp:ap-south-1:925516598557:userpool/ap-south-1_487tj7mc9

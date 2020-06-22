@@ -1,6 +1,8 @@
 import handler from "./libs/handler-lib";
 import dynamoDb from "./libs/dynamodb-lib";
 export const main = handler(async (event, context) => {
+  console.log("event.requestContext.authorizer", event.requestContext.authorizer);
+  console.log("event.requestContext.authorizer.claims", event.requestContext.authorizer.claims);
   const params = {
     TableName: process.env.tableName,
     // 'KeyConditionExpression' defines the condition for the query
@@ -11,7 +13,7 @@ export const main = handler(async (event, context) => {
     // of the authenticated user
     KeyConditionExpression: "userId = :userId",
     ExpressionAttributeValues: {
-      ":userId": event.requestContext.identity.cognitoIdentityId,
+      ":userId": event.requestContext.authorizer.claims['cognito:username'],
     },
   };
   const result = await dynamoDb.query(params);
